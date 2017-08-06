@@ -4,19 +4,19 @@
 
 #include "Tank.h"
 #include "CoreMinimal.h"
-#include "GameFramework/PlayerController.h"
-#include "TankPlayerController.generated.h" // must be last include
+#include "AIController.h"
+#include "TankAIController.generated.h" // must be last include
 
 /**
  * 
  */
 UCLASS()
-class THEBATTLETANK_API ATankPlayerController : public APlayerController
+class THEBATTLETANK_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
 	
 public:
-	ATank* GetControlledTank() const;
 	void BeginPlay() override;
+	ATank* GetControlledTank() const;
 	
 };
