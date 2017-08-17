@@ -6,11 +6,12 @@
 
 
 
-void UTankBarrel::Elevate(float DegreesPerSecond)
+void UTankBarrel::Elevate(float RelativeSpeed)
 {
-	//auto PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
-	//if (GetOwner() == PlayerPawn)
-	//{
-		UE_LOG(LogTemp, Warning, TEXT("Barrel->Elevate() called at speed %f"), DegreesPerSecond);
-	//}
+	auto PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	if (GetOwner() == PlayerPawn)
+	{
+		auto Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp, Warning, TEXT("%f: Barrel->Elevate() called at speed %f"), Time, RelativeSpeed);
+	}
 }

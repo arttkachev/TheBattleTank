@@ -58,7 +58,13 @@ void UTankAimingComponent::AimiAt(FVector HitLocation, float LaunchSpeed)
 	{ 
 	auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 	MoveBarrelTowards(AimDirection);
+	UE_LOG(LogTemp, Warning, TEXT("%f: Aim Solution Found"), WorldTime());
 	}
+	else
+	{
+	UE_LOG(LogTemp, Warning, TEXT("%f: No Aim Solution Found"), WorldTime());
+	}
+		
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
@@ -66,6 +72,18 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = BarrelRotator - AimAsRotator;
-	Barrel->Elevate(5);
+	//Barrel->Elevate(5);
 }
 
+float UTankAimingComponent::WorldTime()
+{
+	if (GetWorld())
+	{
+		float WorldTime = GetWorld()->GetTimeSeconds();
+		return WorldTime;
+	}
+	else
+	{
+		return 0;
+	}
+}
