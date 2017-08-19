@@ -2,12 +2,14 @@
 
 #pragma once
 
-#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
+//forward declaration
 class UTankBarrel;
+class UTankAimingComponent;
+class UTankTurret;
 
 UCLASS()
 class THEBATTLETANK_API ATank : public APawn
@@ -28,6 +30,9 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetTurretReference(UTankTurret* TurretToSet);
 
 private:
 	UPROPERTY(EditAnywhere, Category = Firing)
