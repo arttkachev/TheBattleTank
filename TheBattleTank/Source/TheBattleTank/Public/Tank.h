@@ -34,8 +34,11 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretReference(UTankTurret* TurretToSet);
 
+	UFUNCTION(BlueprintCallable, Category = Firing)
+	void Fire();
+
 private:
 	UPROPERTY(EditAnywhere, Category = Firing)
-	float LaunchSpeed = 10000; //TODO find a sensible value
+	float LaunchSpeed = 4000; //TODO find a sensible value
 	
 };

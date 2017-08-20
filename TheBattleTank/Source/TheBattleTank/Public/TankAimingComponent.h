@@ -22,11 +22,12 @@ public:
 	void AimiAt(FVector HitLocation, float LaunchSpeed);
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 	void SetTurretReference(UTankTurret* TurretToSet);
+	float WorldTimer();
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-
+	
 private:
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
