@@ -23,7 +23,7 @@ public:
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 	void SetTurretReference(UTankTurret* TurretToSet);
 	float WorldTimer();
-
+	
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
