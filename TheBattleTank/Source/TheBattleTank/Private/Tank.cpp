@@ -59,6 +59,7 @@ void ATank::Fire()
 	);
 	// Fire the projectile
 	Projectile->LaunchProjectile(LaunchSpeed);
+	LastFireTime = FPlatformTime::Seconds();
 	}
 
 }
