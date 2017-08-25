@@ -9,13 +9,6 @@
 
 
 
-
-
-
-
-
-
-
 // Sets default values
 ATank::ATank()
 {
@@ -57,8 +50,8 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
-	
-	if (!Barrel) { return; }
+	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
+	if (Barrel && isReloaded) {
 	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 		ProjectileBlueprint,
 		Barrel->GetSocketLocation(FName("Projectile")),
@@ -66,4 +59,6 @@ void ATank::Fire()
 	);
 	// Fire the projectile
 	Projectile->LaunchProjectile(LaunchSpeed);
+	}
+
 }
