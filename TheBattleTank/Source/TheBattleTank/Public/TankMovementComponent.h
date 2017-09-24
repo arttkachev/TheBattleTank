@@ -17,13 +17,14 @@ class THEBATTLETANK_API UTankMovementComponent : public UNavMovementComponent
 	GENERATED_BODY()
 	
 public:
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet);
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	void IntendMoveForward(float Throw);
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	void IntendTurnRight(float Throw);
 
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	void Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet);
 		
 private:
 	//A callable function from pathfinding logic by AI controllers 
