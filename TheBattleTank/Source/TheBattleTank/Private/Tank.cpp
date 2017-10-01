@@ -1,12 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tank.h"
-#include "Projectile.h"
-#include "Components/ActorComponent.h"
 #include "TankBarrel.h"
-#include "TankTurret.h"
-#include "Engine/World.h"
+#include "Projectile.h"
 #include "TankAimingComponent.h"
+
 
 
 
