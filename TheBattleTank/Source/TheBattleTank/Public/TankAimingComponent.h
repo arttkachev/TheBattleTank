@@ -28,10 +28,12 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override; // TODO Should it really tick?
-	void AimiAt(FVector HitLocation, float LaunchSpeed);
+	void AimAt(FVector HitLocation);
 	float WorldTimer();
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
+
+	
 	
 protected:
 	// Called when the game starts
@@ -41,6 +43,8 @@ protected:
 	
 	
 private:
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float LaunchSpeed = 4000;
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 	void MoveBarrelTowards(FVector AimDirection);
