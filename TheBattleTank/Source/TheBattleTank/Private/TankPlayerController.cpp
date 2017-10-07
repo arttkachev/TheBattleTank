@@ -34,7 +34,8 @@ void ATankPlayerController::AimTowardsCrosshair()
 		return;
 	}
 	FVector HitLocation; // Out Parameter
-	if (GetSightRayHitLocation(HitLocation)) // Has "side-effect", is going to line trace
+	bool bGotHitLocation = GetSightRayHitLocation(HitLocation);
+	if (bGotHitLocation) // Has "side-effect", is going to line trace
 	{
 		AimingComponent->AimAt(HitLocation);
 		
@@ -54,9 +55,9 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector &HitLocation) const
 	// "De-project" from ScreenSpace to Worldspace look direction
 	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
-		GetLookVectorHitLocation(LookDirection, HitLocation);
+		return GetLookVectorHitLocation(LookDirection, HitLocation);
 	}
-	return true;
+	return false;
 }
 
 
