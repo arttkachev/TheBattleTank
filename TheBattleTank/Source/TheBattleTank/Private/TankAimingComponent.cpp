@@ -48,6 +48,11 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 
 }
 
+EFiringState UTankAimingComponent::GetFiringState()
+{
+	return FiringState;
+}
+
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
 	Barrel = BarrelToSet;
