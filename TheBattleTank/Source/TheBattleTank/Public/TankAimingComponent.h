@@ -36,7 +36,7 @@ public:
 	void Fire();
 	EFiringState GetFiringState() const;
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int GetRoundsLeft() const;
+	int32 GetRoundsLeft() const;
 
 
 	
@@ -54,19 +54,20 @@ private:
 	bool IsBarrelMoving();
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 4000;
-	UTankBarrel* Barrel = nullptr;
-	UTankTurret* Turret = nullptr;
-	
+
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile>ProjectileBlueprint;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 RoundsLeft = 3;
+	
+	UTankBarrel* Barrel = nullptr;
+	UTankTurret* Turret = nullptr;
 	double LastFireTime = 0;
-
 	FVector AimDirection;
-
-	int RoundsLeft = 3;
+	
 		
 };

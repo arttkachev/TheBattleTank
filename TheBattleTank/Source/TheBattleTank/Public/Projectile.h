@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "Particles/ParticleSystemComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Projectile.generated.h"
 
@@ -19,6 +19,7 @@ public:
 	AProjectile();
 	virtual void Tick(float DeltaTime) override;
 	void LaunchProjectile(float Speed);
+	
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,6 +27,11 @@ protected:
 
 private:
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UStaticMeshComponent* CollisionMesh = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UParticleSystemComponent* LaunchBlast = nullptr;
+	
 	
 
 	
