@@ -5,9 +5,9 @@
 #include "CoreMinimal.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "PhysicsEngine/RadialForceComponent.h"
 #include "Projectile.generated.h"
-
 
 UCLASS()
 class THEBATTLETANK_API AProjectile : public AActor
@@ -18,7 +18,6 @@ public:
 	// Sets default values for this actor's properties
 	AProjectile();
 	void LaunchProjectile(float Speed);
-	
 
 protected:
 	// Called when the game starts or when spawned
@@ -37,6 +36,12 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	URadialForceComponent* ExplosionForce = nullptr;
 	
+	void OnTimerExpire();
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float DestroyDelay = 10.f;
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float ProjectileDamage = 20.f;
+		
 
 	
 	
