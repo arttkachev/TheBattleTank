@@ -14,6 +14,26 @@ void ATankAIController::BeginPlay()
 
 }
 
+void ATankAIController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossesedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossesedTank)) { return; }
+		// Subscribe to the Event
+		PossesedTank->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossesedTankDead);
+
+	}
+	
+
+}
+
+void ATankAIController::OnPossesedTankDead()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Received!"));
+}
+
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);

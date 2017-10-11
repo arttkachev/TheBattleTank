@@ -7,12 +7,12 @@
 #include "Tank.generated.h"
 
 //forward declaration
-class UTankBarrel;
+//class UTankBarrel;
 
-class UTankTurret;
-class AProjectile;
+//class UTankTurret;
+//class AProjectile;
 
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE (FTankDelegate);
 UCLASS()
 class THEBATTLETANK_API ATank : public APawn
 {
@@ -22,6 +22,7 @@ public:
 	virtual float TakeDamage(float DamageAmount,struct FDamageEvent const & DamageEvent,class AController * EventInstigator,AActor * DamageCauser) override;
 	UFUNCTION(BlueprintPure, Category = "Health")
 	float GetHealthPercent() const;
+	FTankDelegate OnDeath;
 private:
 	// Sets default values for this pawn's properties
 	ATank();
