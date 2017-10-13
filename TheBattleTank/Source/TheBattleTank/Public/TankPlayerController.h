@@ -18,6 +18,9 @@ class THEBATTLETANK_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 
 protected:
+	UFUNCTION()
+	void OnPossesedTankDead();
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 
@@ -38,4 +41,6 @@ private:
 	
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
+	virtual void SetPawn(APawn* InPawn) override;
 };
